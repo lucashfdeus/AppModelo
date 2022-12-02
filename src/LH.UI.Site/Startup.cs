@@ -54,9 +54,7 @@ namespace LH.UI.Site
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                   name: "areas",
-                   template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapAreaRoute(name: "AreaProdutos", areaName: "Produtos", template: "Produtos/{controller=Produtos}/{action=Index}/{id?}");
 
                 routes.MapRoute(
                     name: "default",
