@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using LH.UI.Site.Areas.Produtos.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +34,12 @@ namespace LH.UI.Site
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //Ciclos de Vida
+            //Transiente: Obtém uma nova instância do objeto a cada solicitação.
+            //Scoped: Reutiliza a mesma instância do objeto durante todo request (web) indicado para padrões MVC.
+            //Singleton: Utiliza a mesma instânia para toda aplicação.
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
