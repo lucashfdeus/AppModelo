@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -32,6 +33,11 @@ namespace LH.UI.Site
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //Configurando banco de dados e conexão
+            services.AddDbContext<AppModeloDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("AppModeloDbContext"));
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
